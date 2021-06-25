@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/src/main/java/it/agilae/gdpr/model/Oggetto.java
+/src/main/java/it/agilae/gdpr/model/Notifica.java
