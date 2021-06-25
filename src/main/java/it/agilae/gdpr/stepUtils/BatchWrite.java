@@ -1,13 +1,14 @@
 package it.agilae.gdpr.stepUtils;
 
+import it.agilae.gdpr.model.Notifica;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
 import org.springframework.batch.item.ParseException;
 import org.springframework.batch.item.UnexpectedInputException;
 
-public class BatchWrite<T> implements ItemReader<T> {
+public class BatchWrite implements ItemReader<Notifica> {
     @Override
-    public T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+    public Notifica read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
         return null;
     }
 }
