@@ -1,5 +1,6 @@
 package it.agilae.gdpr.batchConfig;
 
+import it.agilae.gdpr.model.Notifica;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -21,7 +22,7 @@ public class BatchConfig {
     // Creazione del Job
     public Job job1{
         return jobBuilderFactory.get("job1")
-                .<>chunck(10)
+                .<Notifica, Notifica>chunck(10)
                 .reader()
                 .processor()
                 .write()

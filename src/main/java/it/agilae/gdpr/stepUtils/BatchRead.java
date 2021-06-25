@@ -11,6 +11,7 @@ public class BatchRead<T> implements ItemReader<T> {
     @Override
     public T read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
 
+        return null;
 
     }
 }
