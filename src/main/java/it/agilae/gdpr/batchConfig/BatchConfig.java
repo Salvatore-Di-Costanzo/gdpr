@@ -1,10 +1,15 @@
 package it.agilae.gdpr.batchConfig;
 
 import it.agilae.gdpr.model.Notifica;
+import it.agilae.gdpr.stepUtils.BatchProcessor;
+import it.agilae.gdpr.stepUtils.BatchRead;
+import it.agilae.gdpr.stepUtils.BatchWrite;
 import org.springframework.batch.core.Job;
+import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
@@ -20,14 +25,38 @@ public class BatchConfig {
     }
 
     // Creazione del Job
-    public Job job1{
-        return jobBuilderFactory.get("job1")
-                .start()
+    @Bean
+    public Job jobNotifiche(){
+        return jobBuilderFactory.get("jobNotifiche")
+                .start(stepNotifiche())
+                .build();
+    }
+
+    // Creazione Step
+    @Bean
+    public Step stepNotifiche(){
+        return stepBuilderFactory.get("StepNotifiche")
+                .<Notifica,Notifica>chunk(10)
+                .reader(batchRead())
+                .processor(batchProcessor())
+                .writer(batchWrite())
                 .build();
     }
 
     // Creazione degli Step
 
-    // Step per la lettura dal db
-    public
+    // Reader DB
+    public BatchRead batchRead(){
+        return new BatchRead();
+    }
+
+    // Processor Notifiche
+    public BatchProcessor batchProcessor(){
+        return new BatchProcessor();
+    }
+
+    // Writer DB
+    public BatchWrite batchWrite(){
+        return new BatchWrite();
+    }
 }
