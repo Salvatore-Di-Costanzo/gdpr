@@ -29,5 +29,5 @@ public class Notifica {
     @Column(name = "oggetto_id", nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="oggetto_id", referencedColumnName="oggetto_id", nullable = false)
-    private @Getter @Setter Long oggetto_id;
+    private @Getter @Setter Oggetto oggetto_id;
 }

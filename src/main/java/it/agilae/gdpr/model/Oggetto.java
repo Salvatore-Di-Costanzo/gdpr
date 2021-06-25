@@ -13,9 +13,13 @@ import javax.persistence.*;
 @Table(name = "tbl_plt_stc_notifica_oggetto",schema = "gdpr")
 public class Oggetto {
     @Id
-    @Column(name = "notifica_id", unique = true, nullable = false)
-    private @Getter
-    @Setter
-    Long notifica_id;
+    @Column(name = "oggetto_id", unique = true, nullable = false)
+    private @Getter @Setter Long notifica_id;
+
+    @Column(name = "oggetto", unique = true, nullable = false)
+    private @Getter @Setter String oggetto;
+
+    @Column(name = "enabled", unique = true, nullable = false)
+    private @Getter @Setter Boolean enabled;
 
 }
