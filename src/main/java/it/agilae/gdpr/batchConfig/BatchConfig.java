@@ -22,10 +22,7 @@ public class BatchConfig {
     // Creazione del Job
     public Job job1{
         return jobBuilderFactory.get("job1")
-                .<Notifica, Notifica>chunck(10)
-                .reader()
-                .processor()
-                .write()
+                .start()
                 .build();
     }
 
